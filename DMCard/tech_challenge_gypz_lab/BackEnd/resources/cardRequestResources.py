@@ -34,7 +34,7 @@ response = get("http://127.0.0.1:5000/cardrequest/")
 #parser.add_argument('req')
 
 def abort_if_doesnt_exist(req_id):
-    if param not in inicialData:
+    if req_id not in inicialData:
         abort(404, message="Requisição {} não existe".format(req_id))
 
 class CardRequestResource(Resource):
