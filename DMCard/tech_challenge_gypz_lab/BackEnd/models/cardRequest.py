@@ -3,7 +3,8 @@ from flask_restful import Resource
 
 class CardRequest:
 
-    def __init__(self, User):
+    def __init__(self, User, id):
+        self.__req_id = id
         self.__status = False
         self.__credit = 0
         self.__user = User
@@ -19,6 +20,10 @@ class CardRequest:
     @property
     def user (self):
         return self.__user
+
+    @property
+    def req_id (self):
+        return self.__req_id
 
     def approvation(self):
         if(self.__user.score > 299):
@@ -39,4 +44,21 @@ class CardRequest:
 
         elif(self.__user.score <= 999):
             self.__credit = 1000000
+
+    def to_json(self):
+        ret = {
+        "req_id": + self.__req_id,
+        "data": 
+            {
+                "user": 
+                {
+                    "name" : self.__user.name,
+                    "income" : float(self.__user.income),
+                    "score" : self.__user.score
+                },
+                "status" : self.__status,
+                "credit" : float(self.__credit)
+            }
+        }
+        return ret
     
