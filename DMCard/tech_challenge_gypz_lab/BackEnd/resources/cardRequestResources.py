@@ -27,15 +27,10 @@ inicialData = [
 ]
 
 '''
-response = post("http://127.0.0.1:5000/cardrequest/", data = { 'name' : 'Allan', 'income' : '1231'})
-response = get("http://127.0.0.1:5000/cardrequest/")
+response = post("http://127.0.0.1:5000/cardrequest", data = { 'name' : 'Allan', 'income' : '1231'})
+response = get("http://127.0.0.1:5000/cardrequest")
+response = delete("http://127.0.0.1:5000/cardrequest/1")
 '''
-#parser = reqparse.RequestParser()
-#parser.add_argument('req')
-
-def abort_if_doesnt_exist(req_id):
-    if req_id not in inicialData:
-        abort(404, message="Requisição {} não existe".format(req_id))
 
 class CardRequestResource(Resource):
     def get(self):
@@ -44,30 +39,27 @@ class CardRequestResource(Resource):
         return data_return
 
     def post(self):
-        #try:
-        print(len(inicialData)+1)
-        new_user_req = User(request.form['name'],request.form['income'])
-        new_req = CardRequest(new_user_req, len(inicialData)+1)
-        new_req.approvation()
-        if(new_req.status):
-            new_req.creditAllowed()
-            inicialData.append(new_req.to_json())
-        else:
-            print(new_user_req.score)
-            inicialData.append(new_req.to_json())
-            return {'message': 'Cŕedito não aprovado.'}, 200
-        
-        print(request.form['income'] + ' ' + request.form['name'])
-        return {'message': 'Requisição criada com sucesso!'}, 201
+        try:
+            new_user_req = User(request.form['name'],request.form['income'])
+            new_req = CardRequest(new_user_req, len(inicialData)+1)
+            new_req.approvation()
+            if(new_req.status):
+                new_req.creditAllowed()
+                inicialData.append(new_req.to_json())
+            else:
+                print(new_user_req.score)
+                inicialData.append(new_req.to_json())
+                return [{"message": "Cŕedito não aprovado."}], 200
+            
+            print(request.form['income'] + ' ' + request.form['name'])
+            return [{"message": "Requisição {} criada com sucesso!".format(new_req.req_id)}], 201
+        except:
+            return [{"message" : "Requisição não existe foi criada, verificar nome e renda"}], 404
 
-        #except:
-        #    return 'Ocorreu um problema no cadastro de uma nova requisição!', 400
-        
-        #args = parser.parse_args()
-        #task = {'req': args['req']}
-        #inicialData[req_id] = task
-
-    def delete(self):
-        #abort_if_doesnt_exist(param)
-        #del inicialData[param]
-        return '', 204
+class CardRequestMaintenceResource(Resource):
+    def delete(self, req_id):
+        try:
+            del inicialData[req_id]
+            return '', 204
+        except:
+            return [{"message" : "Requisição {} não existe".format(req_id)}], 404
