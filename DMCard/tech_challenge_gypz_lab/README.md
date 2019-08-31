@@ -3,6 +3,7 @@ Aplicação que permitirá a solicitação de um cartão de crédito, onde o usu
 
 ## BackEnd - RESTful API
 API capaz de interpretar os seguintes verbos em suas respectivas URIs:
+
 | Método    | URI                           | Ação                                      |
 | --------- | ----------------------------- | ----------------------------------------- |
 | GET       | http://{host}/cardrequest     | Traz todas solicitações existentes        |
@@ -21,7 +22,4 @@ UIs desenvolvidas para realizar a interação com a API.
 * [React] (https://reactjs.org/) - Biblioteca JS
 * [axios] (https://github.com/axios/axios) - Cliente HTTP
 * [Primitive CSS] (https://taniarascia.github.io/primitive/) - Estilos minimalistas
-
-## Refs
-
 
