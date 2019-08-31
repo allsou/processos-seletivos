@@ -18,7 +18,7 @@ API capaz de interpretar os seguintes verbos em suas respectivas URIs:
 ## FrontEnd
 UIs desenvolvidas para realizar a interação com a API.
 
-### Bibliotecas
+### Bibliotecas Utilizadas
 * [React] (https://reactjs.org/) - Biblioteca JS
 * [axios] (https://github.com/axios/axios) - Cliente HTTP
 * [Primitive CSS] (https://taniarascia.github.io/primitive/) - Estilos minimalistas
