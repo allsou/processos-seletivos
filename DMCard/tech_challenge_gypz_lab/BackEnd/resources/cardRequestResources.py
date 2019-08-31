@@ -9,22 +9,7 @@ data={
     'income' : '5151.54'
     }
 
-inicialData = [
-    {
-        "req_id": 1,
-        "data": 
-            {
-                "user": 
-                {
-                    "name" : "Allan Santos",
-                    "income" : 1982.54,
-                    "score" : 739
-                },
-                "status" : True,
-                "credit" : 1000
-            }
-    }
-]
+inicialData = [{"req_id": 1,"data":{"user":{"name" : "Allan Santos","income" : 1982.54,"score" : 739},"status" : True,"credit" : 1000}}]
 
 '''
 response = post("http://127.0.0.1:5000/cardrequest", data = { 'name' : 'Allan', 'income' : '1231'})
@@ -36,7 +21,7 @@ class CardRequestResource(Resource):
     def get(self):
         data_return = json.dumps(inicialData)
         data_return = json.loads(data_return)
-        return data_return
+        return data_return, 200
 
     def post(self):
         try:
@@ -59,7 +44,9 @@ class CardRequestResource(Resource):
 class CardRequestMaintenceResource(Resource):
     def delete(self, req_id):
         try:
-            del inicialData[req_id]
-            return '', 204
+            for data in inicialData:
+                if(data["req_id"] == req_id):
+                    inicialData.remove(data)
+            return "Requisição {} excluída com sucesso".format(req_id), 204
         except:
             return [{"message" : "Requisição {} não existe".format(req_id)}], 404
