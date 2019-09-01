@@ -46,19 +46,6 @@ class CardRequest:
             self.__credit = 1000000.00
 
     def to_json(self):
-        ret = {
-        "req_id": + self.__req_id,
-        "data": 
-            {
-                "user": 
-                {
-                    "name" : self.__user.name,
-                    "income" : float(self.__user.income),
-                    "score" : self.__user.score
-                },
-                "status" : self.__status,
-                "credit" : float(self.__credit)
-            }
-        }
+        ret = {"req_id": + self.__req_id,"data":{"user": {"name" : self.__user.name,"income" : float(self.__user.income),"score" : self.__user.score},"status" : self.__status,"credit" : float(self.__credit)}}
         return ret
     
