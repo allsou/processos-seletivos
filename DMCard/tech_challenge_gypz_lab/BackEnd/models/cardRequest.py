@@ -31,11 +31,11 @@ class CardRequest:
 
     def creditAllowed(self):
         if(self.__user.score >= 300 and self.__user.score <= 599):
-            self.__credit = 1000
+            self.__credit = 1000.00
 
         elif(self.__user.score <= 799):
             if(float(self.__user.income)*0.5 < 1000):
-                self.__credit = 1000
+                self.__credit = 1000.00
             else:
                 self.__credit = float(self.__user.income)*0.5
 
@@ -43,7 +43,7 @@ class CardRequest:
             self.__credit = float(self.__user.income)*2
 
         elif(self.__user.score <= 999):
-            self.__credit = 1000000
+            self.__credit = 1000000.00
 
     def to_json(self):
         ret = {
