@@ -14,6 +14,7 @@ API capaz de interpretar os seguintes verbos em suas respectivas URIs:
 * [Flask] (https://palletsprojects.com/p/flask/) - Microframework
 * [Flask-RESTful] (https://flask-restful.readthedocs.io/en/latest/) - Suporte a recursos
 * [Flask-CORS] (https://flask-cors.readthedocs.io/en/latest/) - Cross Origin Resource Sharing
+* [TinyDB] (https://tinydb.readthedocs.io/en/latest/index.html) - Persistência dos dados
 
 ## FrontEnd
 UIs desenvolvidas para realizar a interação com a API.
