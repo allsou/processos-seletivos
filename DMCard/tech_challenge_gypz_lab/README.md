@@ -18,6 +18,8 @@ API capaz de interpretar os seguintes verbos em suas respectivas URIs:
 ## FrontEnd
 UIs desenvolvidas para realizar a interação com a API.
 
+![](https://github.com/allsou/ProcessosSeletivos/blob/master/DMCard/tech_challenge_gypz_lab/FrontEnd/img.png)
+
 ### Bibliotecas Utilizadas
 * [React] (https://reactjs.org/) - Biblioteca JS
 * [axios] (https://github.com/axios/axios) - Cliente HTTP
