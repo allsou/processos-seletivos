@@ -17,6 +17,18 @@ response = get("http://127.0.0.1:5000/cardrequest")
 response = delete("http://127.0.0.1:5000/cardrequest/1")
 '''
 
+def lastReq():
+    value = 0
+    for i in inicialData:
+        if(i["req_id"] > value ):
+            value = i["req_id"]
+    return value+1
+
+def retJson(data):
+    data = json.dumps(data)
+    data = json.loads(data)
+    return data
+
 class CardRequestResource(Resource):
     def get(self):
         data_return = json.dumps(inicialData)
@@ -25,21 +37,21 @@ class CardRequestResource(Resource):
 
     def post(self):
         try:
-            new_user_req = User(request.form['name'],request.form['income'])
-            new_req = CardRequest(new_user_req, len(inicialData)+1)
+            new_user_req = User(request.json["name"],float(request.json["income"]))
+            new_req = CardRequest(new_user_req, lastReq())
             new_req.approvation()
             if(new_req.status):
                 new_req.creditAllowed()
                 inicialData.append(new_req.to_json())
             else:
-                print(new_user_req.score)
                 inicialData.append(new_req.to_json())
-                return [{"message": "Cŕedito não aprovado."}], 200
-            
-            print(request.form['income'] + ' ' + request.form['name'])
-            return [{"message": "Requisição {} criada com sucesso!".format(new_req.req_id)}], 201
+                data = {"message": "Cŕedito não aprovado."}
+                return retJson(data), 200
+            data = {"message": "Requisição {} criada com sucesso!".format(new_req.req_id)}
+            return retJson(data), 201
         except:
-            return [{"message" : "Requisição não existe foi criada, verificar nome e renda"}], 404
+            data = {"message" : "Requisição não existe foi criada, verificar nome e renda"}
+            return retJson(data), 404
 
 class CardRequestMaintenceResource(Resource):
     def delete(self, req_id):
@@ -47,6 +59,8 @@ class CardRequestMaintenceResource(Resource):
             for data in inicialData:
                 if(data["req_id"] == req_id):
                     inicialData.remove(data)
-            return "Requisição {} excluída com sucesso".format(req_id), 204
+            data = {"message":"Requisição {} excluída com sucesso".format(req_id)}
+            return retJson(data), 200
         except:
-            return [{"message" : "Requisição {} não existe".format(req_id)}], 404
+            data = {"message" : "Requisição {} não existe".format(req_id)}
+            return retJson(data), 404
