@@ -10,14 +10,14 @@ function validateReq(value){
 }
 
 function deleteReq(req_id){
-  const API_URL = 'http://127.0.0.1:5000/cardrequest/';
+  const API_URL = 'https://pacific-beyond-38136.herokuapp.com/cardrequest/';
   console.log(API_URL+req_id)
   axios.delete(API_URL+req_id).then(
     res =>{
       alert(res.data.message)
+      location.reload(true)
     }
   )
-  window.location.reload()
 }
 
 const TableHeader = () => {

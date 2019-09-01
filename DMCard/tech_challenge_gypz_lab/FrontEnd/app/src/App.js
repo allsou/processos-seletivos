@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Table from './Table'
 import Form from './Form'
 import axios from 'axios'
-const API_URL = 'http://127.0.0.1:5000'
+const API_URL = 'https://pacific-beyond-38136.herokuapp.com'
 
 class App extends Component {
     state = {

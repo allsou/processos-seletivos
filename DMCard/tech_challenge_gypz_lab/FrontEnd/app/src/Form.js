@@ -2,19 +2,13 @@ import React, { Component } from 'react'
 import axios from 'axios';
 
 function createReq(state){
-    const API_URL = 'http://127.0.0.1:5000/cardrequest/'
+    const API_URL = 'https://pacific-beyond-38136.herokuapp.com/cardrequest/'
     axios.post(API_URL, state).then(
         res =>{
-            console.log(res)
             alert(res.data.message)
-            window.location.reload()
+            location.reload(true)
         }
-    ).catch(
-        res =>{
-            console.log(this.state)
-            alert(res.data.message)
-            window.location.reload()
-        }
+        
     )
 }
 
