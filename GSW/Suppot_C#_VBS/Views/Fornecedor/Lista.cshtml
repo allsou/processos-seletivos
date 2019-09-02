@@ -1,0 +1,25 @@
+﻿@model List<FornecedorModel>;
+<h3>Lista</h3>
+<table id="tabela" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Empresa</th>
+            <th>Nome</th>
+            <th>CPF/CNPJ</th>
+            <th>Data/Hora de Cadastro</th>
+            <th>Telefones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var fornecedor in Model)
+        {
+        <tr>
+            <td>@fornecedor.Empresa.NomeFantasia</td>
+            <td>@fornecedor.Nome</td>
+            <td>@fornecedor.Documento</td>
+            <td>@fornecedor.Cadastro</td>
+            <td>@fornecedor.telefonesString()</td>
+        </tr>
+        }
+    </tbody>
+</table>

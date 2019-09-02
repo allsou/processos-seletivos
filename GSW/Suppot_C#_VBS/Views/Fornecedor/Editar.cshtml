@@ -1,0 +1,21 @@
+﻿@model List<FornecedorModel>;
+<h2>Editar/Excluir Fornecedor</h2>
+<form asp-action="Edicao" asp-controller="Fornecedor">
+    <div class="form-group required">
+        <label class="control-label" asp-for="@Model">Fornecedor</label>
+        <select class="form-control single-select" name="Nome" asp-for="@Model">
+            <option selected value="">[Selecione o Fornecedor]</option>
+            @foreach (FornecedorModel fornecedor in Model)
+            {
+                <option value="@fornecedor.Nome">@fornecedor.Nome</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <button type="submit"
+                class="btn btn-success">
+            Editar
+        </button>
+    </div>
+</form>
+
