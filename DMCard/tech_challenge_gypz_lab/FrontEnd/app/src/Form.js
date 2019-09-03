@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import CurrencyInput from 'react-currency-input'
 
 function createReq(state){
     const API_URL = ' http://127.0.0.1:5000/cardrequest/'
@@ -54,11 +55,11 @@ class Form extends Component {
                 value={name}
                 onChange={this.handleChange} />
                 <label>Renda R$</label>
-                <input
-                type="number"
+                <CurrencyInput
+                precision="2"
                 name="income"
-                value={income}
-                onChange={this.handleChange} />
+                value={income} 
+                onChangeEvent={this.handleChange}/>
                 <input type="button" value="Enviar Requisição" onClick={this.submitForm} />
             </form>
       </div>
