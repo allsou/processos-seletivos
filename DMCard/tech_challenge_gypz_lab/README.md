@@ -25,4 +25,5 @@ UIs desenvolvidas para realizar a interação com a API.
 * [React] (https://reactjs.org/) - Biblioteca JS
 * [axios] (https://github.com/axios/axios) - Cliente HTTP
 * [Primitive CSS] (https://taniarascia.github.io/primitive/) - Estilos minimalistas
+* [react-currency-input] (https://www.npmjs.com/package/react-currency-input) - Máscara de moeda
 
