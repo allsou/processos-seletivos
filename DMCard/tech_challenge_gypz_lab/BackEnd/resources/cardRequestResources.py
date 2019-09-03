@@ -36,7 +36,7 @@ class CardRequestResource(Resource):
         return data_return, 200
 
     def post(self):
-        #try:
+        try:
         income = request.json["income"]
         income = income.replace(",","")
         new_user_req = User(request.json["name"],float(income))
@@ -51,9 +51,9 @@ class CardRequestResource(Resource):
             return retJson(data), 200
         data = {"message": "Requisição {} criada com sucesso!".format(new_req.req_id)}
         return retJson(data), 201
-        #except:
-            #data = {"message" : "Requisição não existe foi criada, verificar nome e renda"}
-            #return retJson(data), 200
+        except:
+            data = {"message" : "Requisição não existe foi criada, verificar nome e renda"}
+            return retJson(data), 200
 
 class CardRequestMaintenceResource(Resource):
     def delete(self, req_id):
