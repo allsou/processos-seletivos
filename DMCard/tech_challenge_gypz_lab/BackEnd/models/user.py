@@ -16,6 +16,7 @@ class User:
     @property
     def income(self):
         return self.__income
+
     @income.setter
     def income(self, income):
         self.__income = income
@@ -23,3 +24,6 @@ class User:
     @property
     def score(self):
         return self.__score
+
+    def incomeFormat(self):
+        return str('{:,.2f}'.format(float(self.__income)))
