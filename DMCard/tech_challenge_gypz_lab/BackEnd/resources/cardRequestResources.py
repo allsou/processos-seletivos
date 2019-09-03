@@ -36,29 +36,27 @@ class CardRequestResource(Resource):
         return data_return, 200
 
     def post(self):
-        #try:
-        new_user_req = User(request.json["name"],float(request.json["income"]))
-        new_req = CardRequest(new_user_req, lastReq(db.all()))
-        new_req.approvation()
-        if(new_req.status):
-            new_req.creditAllowed()
-            db.insert(new_req.to_json())
-        else:
-            db.insert(new_req.to_json())
-            data = {"message": "Cŕedito não aprovado."}
-            return retJson(data), 200
-        data = {"message": "Requisição {} criada com sucesso!".format(new_req.req_id)}
-        return retJson(data), 201
-        #except:
-            #data = {"message" : "Requisição não existe foi criada, verificar nome e renda"}
-            #return retJson(data), 404
+        try:
+            new_user_req = User(request.json["name"],float(request.json["income"]))
+            new_req = CardRequest(new_user_req, lastReq(db.all()))
+            new_req.approvation()
+            if(new_req.status):
+                new_req.creditAllowed()
+                db.insert(new_req.to_json())
+            else:
+                db.insert(new_req.to_json())
+                data = {"message": "Cŕedito não aprovado para requisição {}".format(new_req.req_id)}
+                return retJson(data), 200
+            data = {"message": "Requisição {} criada com sucesso!".format(new_req.req_id)}
+            return retJson(data), 201
+        except:
+            data = {"message" : "Requisição não existe foi criada, verificar nome e renda"}
+            return retJson(data), 404
 
 class CardRequestMaintenceResource(Resource):
     def delete(self, req_id):
         try:
-            for data in db:
-                if(data["req_id"] == req_id):
-                    db.remove(Req.req_id == data["req_id"])
+            db.remove(Req.req_id == req_id)
             data = {"message":"Requisição {} excluída com sucesso".format(req_id)}
             return retJson(data), 200
         except:
