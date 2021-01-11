@@ -1,5 +1,6 @@
 # Approved?
 ![](https://github.com/allsou/ProcessosSeletivos/blob/master/assets/check-mark.png)
+
 # GYPZ - Tech Challenge
 Aplicação que permitirá a solicitação de um cartão de crédito, onde o usuário irá inserir suas informações básicas e o sistema irá fazer uma análise da liberação do cartão.
 
