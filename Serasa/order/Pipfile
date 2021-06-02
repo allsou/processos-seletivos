@@ -1,0 +1,21 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "*"
+v = {version = "*",editable = true}
+
+[packages]
+python-dotenv = "*"
+uvicorn = "*"
+starlette = "*"
+pony = "*"
+pymysql = "*"
+cryptography = "*"
+peewee = "*"
+requests = "*"
+
+[requires]
+python_version = "3.7"

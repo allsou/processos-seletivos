@@ -1,0 +1,335 @@
+{
+	"info": {
+		"_postman_id": "0a8ce2f9-0000-40ec-b716-b31386e90fcd",
+		"name": "Serasa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"string\",\n  \"cpf\": \"0000000019n\",\n  \"email\": \"alan_souzas9@hotmail.com\",\n  \"phone_number\": \"(12) 98202-9058\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3100/v1/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3100",
+							"path": [
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3100/v1/user/5f276e6964bb0c471f81fd5c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3100",
+							"path": [
+								"v1",
+								"user",
+								"5f276e6964bb0c471f81fd5c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3100/v1/users?view=cached",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3100",
+							"path": [
+								"v1",
+								"users"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "5f2770c140fbea532e07f7dc",
+									"disabled": true
+								},
+								{
+									"key": "user_id",
+									"value": "5f276e6964bb0c471f81fd5c",
+									"disabled": true
+								},
+								{
+									"key": "view",
+									"value": "cached"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3100/v1/user/5f2770c140fbea532e07f7dc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3100",
+							"path": [
+								"v1",
+								"user",
+								"5f2770c140fbea532e07f7dc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n      \"name\": \"juh\",\n      \"cpf\": \"56755841920\",\n      \"email\": \"a@a.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3100/v1/user/5f2770c140fbea532e07f7dc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3100",
+							"path": [
+								"v1",
+								"user",
+								"5f2770c140fbea532e07f7dc"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "Create order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user_id\": \"5f27712d40fbea532e07f7dd\",\n  \"item_description\": \"fsdfsdfsd\",\n  \"item_quantity\": 1123123,\n  \"item_price\": 0.54\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3200/v1/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"v1",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3200/v1/order/19",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"v1",
+								"order",
+								"19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3200/v1/orders?item_description=fdgf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"v1",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "order_id",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "order_id",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "item_description",
+									"value": "fdgf"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3200/v1/order/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"v1",
+								"order",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update order",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n      \"user_id\": \"5f256e14668b0f042497740a\",\n      \"item_description\": \"teste\",\n      \"item_quantity\": 54,\n      \"item_price\": 1.5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3200/v1/order/19",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"v1",
+								"order",
+								"19"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "elasticsearch",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9200/orders/order/_search?q=viagem",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"orders",
+						"order",
+						"_search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "viagem"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

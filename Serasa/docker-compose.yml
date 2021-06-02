@@ -1,0 +1,60 @@
+version: "3.7"
+services:
+  user:
+    build: ./user
+    ports:
+      - 3100:3100
+    depends_on:
+      - mongo
+      - redis
+    networks:
+      - serasa-network
+  order:
+    build: ./order
+    ports:
+      - 3200:3200
+    depends_on:
+      - mysql
+      - elasticsearch
+    networks:
+      - serasa-network
+  mongo:
+    image: mongo:4.2-bionic
+    networks:
+      - serasa-network
+  redis:
+    image: redis:alpine
+    networks:
+      - serasa-network
+  mysql:
+    image: mysql/mysql-server
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: order
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+      MYSQL_ROOT_HOST: '%'
+    networks:
+      - serasa-network
+  elasticsearch:
+    image: elasticsearch:5
+    ports:
+      - 9200:9200
+    networks:
+      - serasa-network
+  logstash:
+    image: logstash:7.8.1
+    volumes:
+      - ./logstash:/etc/logstash
+    command: logstash -f /etc/logstash/logstash.conf
+    environment:
+        ELASTIC_INDEX: orders
+        ELASTIC_DOC_TYPE: order
+        ELASTIC_HOSTS: elasticsearch
+        MYSQL_HOST: mysql
+        MYSQL_ROOT_USER: user
+        MYSQL_ROOT_PASSWORD: pass
+    networks:
+      - serasa-network
+networks:
+  serasa-network:

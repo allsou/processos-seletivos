@@ -1,0 +1,18 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "*"
+v = {version = "*",editable = true}
+
+[packages]
+python-dotenv = "*"
+uvicorn = "*"
+starlette = "*"
+mongoengine = "*"
+redis = "*"
+
+[requires]
+python_version = "3.7"
