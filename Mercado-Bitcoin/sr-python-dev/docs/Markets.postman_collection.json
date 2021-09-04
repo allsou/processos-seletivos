@@ -1,0 +1,197 @@
+{
+	"info": {
+		"_postman_id": "cea47e52-9658-40b7-880f-4f5ebf315dab",
+		"name": "Markets",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create market",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"long\": \"-46550164\",\n    \"lat\": -23558733,\n    \"setcens\": 355030885000091,\n    \"areap\": 3550308005040,\n    \"coddist\": 87,\n    \"distrito\": \"VILA FORMOSA\",\n    \"codsubpref\": 26,\n    \"subprefe\": \"ARICANDUVA-FORMOSA-CARRAO\",\n    \"regiao5\": \"Leste\",\n    \"regiao8\": \"Leste 1\",\n    \"nome_feira\": \"VILA FORMOSA\",\n    \"registro\": \"4430-0\",\n    \"logradouro\": \"RUA MARAGOJIPE\",\n    \"numero\": \"S/N\",\n    \"bairro\": \"VL FORMOSA\",\n    \"referencia\": \"TV RUA PRETORIA\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3100/markets/v0/market",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3100",
+					"path": [
+						"markets",
+						"v0",
+						"market"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get market",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3100/markets/v0/markets/:market_registry",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3100",
+					"path": [
+						"markets",
+						"v0",
+						"markets",
+						":market_registry"
+					],
+					"variable": [
+						{
+							"key": "market_registry",
+							"value": "4038-0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get markets",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3100/markets/v0/markets?regiao5=Leste&bairro=BRAS",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3100",
+					"path": [
+						"markets",
+						"v0",
+						"markets"
+					],
+					"query": [
+						{
+							"key": "distrito",
+							"value": "FREGUESIA DO O",
+							"disabled": true
+						},
+						{
+							"key": "regiao5",
+							"value": "Leste"
+						},
+						{
+							"key": "nome_feira",
+							"value": "MARIA CARLOTA",
+							"disabled": true
+						},
+						{
+							"key": "bairro",
+							"value": "BRAS"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update market",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"distrito\": \"LAPA\",\n    \"regisro\": \"0000-0\",\n    \"logradouro\": \"RUA TESTE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3100/markets/v0/markets/:market_registry",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3100",
+					"path": [
+						"markets",
+						"v0",
+						"markets",
+						":market_registry"
+					],
+					"variable": [
+						{
+							"key": "market_registry",
+							"value": "4038-0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete market",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3100/markets/v0/markets/:market_registry",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3100",
+					"path": [
+						"markets",
+						"v0",
+						"markets",
+						":market_registry"
+					],
+					"variable": [
+						{
+							"key": "market_registry",
+							"value": "4041-0"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

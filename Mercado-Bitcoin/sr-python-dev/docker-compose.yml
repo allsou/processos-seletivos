@@ -1,0 +1,34 @@
+version: '3.7'
+services:
+  postgre:
+    image: postgres:12
+    environment:
+      POSTGRES_USER: "${DATABASE_USER}"
+      POSTGRES_PASSWORD: "${DATABASE_PASSWORD}"
+      POSTGRES_DB: "${DATABASE_NAME}"
+#      POSTGRES_HOST_AUTH_METHOD: 'trust'
+    volumes:
+      - postgre-data:/var/lib/postgresql/data/
+    networks:
+      - market-network
+
+  market:
+    build: .
+    ports:
+      - "3100:${MARKET_PORT}"
+    environment:
+      SERVICE_HOST: "${MARKET_HOST}"
+      SERVICE_PORT: "${MARKET_PORT}"
+    volumes:
+      - logs:/app/logs
+    networks:
+      - market-network
+    restart: on-failure
+
+networks:
+  market-network:
+
+volumes:
+  logs:
+  postgre-data:
+    name: postgre
