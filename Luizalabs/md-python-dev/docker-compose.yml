@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+
+  mongo:
+    image: mongo:4.2-bionic
+    networks:
+      - luizalab-net
+  favorites:
+    build: .
+    ports:
+      - "3001:${SERVICE_PORT}"
+    environment:
+      SERVICE_HOST: "${SERVICE_HOST}"
+      SERVICE_PORT: "${SERVICE_PORT}"
+      MONGO: "${MONGO}"
+      AUTH0_DOMAIN: "${AUTH0_DOMAIN}"
+      API_AUDIENCE: "${API_AUDIENCE}"
+    networks:
+      - luizalab-net
+    restart: on-failure
+
+networks:
+    luizalab-net:
+
+volumes:
+  logs:

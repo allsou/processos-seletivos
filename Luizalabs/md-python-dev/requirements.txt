@@ -1,0 +1,7 @@
+starlette
+uvicorn
+mongoengine
+python-jose
+six
+dnspython
+pytest

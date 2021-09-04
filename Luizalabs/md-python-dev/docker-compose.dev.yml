@@ -1,0 +1,5 @@
+version: '3.7'
+services:
+  favorites:
+    volumes:
+      - ./:/app/
