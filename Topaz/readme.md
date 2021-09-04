@@ -1,3 +1,6 @@
+# Approved?
+![](https://github.com/allsou/ProcessosSeletivos/blob/master/assets/check-mark.png)
+
 # Teste Topaz
 Leitura de arquivo input.txt do diretório data_source e saída no diretório de execução
 

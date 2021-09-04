@@ -1,14 +1,8 @@
 # Tech challenges
 
-Rep to save all tech challenges
-![](https://github.com/allsou/ProcessosSeletivos/blob/master/assets/check-mark.png)
-
-![](https://github.com/allsou/ProcessosSeletivos/blob/master/assets/cancel.png)
-
-![](https://github.com/allsou/ProcessosSeletivos/blob/master/assets/exit.png)
-
-| Método      | URI                           |
+Rep to save all tech challenges.
+In all folders are available a image with feedback received by companies. Such as:
+| Feedback    | Image                           |
 | ----------- | ----------------------------- |
 | Approved    | ![](https://github.com/allsou/ProcessosSeletivos/blob/master/assets/check-mark.png)     |
-| Disapproved | http://{host}/cardrequest     |
-| Quit/Exit   | http://{host}cardrequest/{id} |
+| Disapproved | ![](https://github.com/allsou/ProcessosSeletivos/blob/master/assets/cancel.png)     |
