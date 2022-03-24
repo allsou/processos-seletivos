@@ -1,1 +1,4 @@
 .idea
+
+# Coverage files
+Mercado-Bitcoin/sr-python-dev/cov_html
