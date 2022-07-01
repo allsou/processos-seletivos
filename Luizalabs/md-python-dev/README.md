@@ -16,12 +16,13 @@ This will download docker images such as python and mongo.
 > $ make build
 ```python
 ...
-Step 9/9 : ENTRYPOINT python server.py
- ---> Running in e86cc9cf2dab
-Removing intermediate container e86cc9cf2dab
- ---> 52006d98d11c
-Successfully built 52006d98d11c
-Successfully tagged luizalabs_favorites:latest
+Step 7/7 : ENTRYPOINT python server.py
+ ---> Running in 31d0ae456d38
+Removing intermediate container 31d0ae456d38
+ ---> b8410cc36f27
+
+Successfully built b8410cc36f27
+Successfully tagged dock-dev-api-rest-test_dock:latest
 ```
 
 ## Up services

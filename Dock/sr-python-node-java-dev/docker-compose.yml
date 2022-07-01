@@ -1,0 +1,35 @@
+version: '3.7'
+services:
+
+  mongo:
+    image: mongo:4.2-bionic
+    ports:
+      - "27017:27017"    
+    networks:
+      - dock-net
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - dock-net
+
+  dock:
+    build: .
+    ports:
+      - "80:${SERVICE_PORT}"
+    environment:
+      SERVICE_HOST: "${SERVICE_HOST}"
+      SERVICE_PORT: "${SERVICE_PORT}"
+      MONGO: "${MONGO}"
+      REDIS: "${REDIS}"
+    networks:
+      - dock-net
+    restart: on-failure
+
+networks:
+    dock-net:
+
+volumes:
+  logs:

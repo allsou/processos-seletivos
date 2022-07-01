@@ -1,0 +1,532 @@
+{
+  "swagger": "2.0",
+  "basePath": "/transactions/api/v0",
+  "host": "host",
+  "info": {
+    "title": "Dock",
+    "version": "v0",
+    "description": "Digital account APIs"
+  },
+  "paths": {
+    "/holders": {
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "AlLan Bida"
+                },
+                "tax_id": {
+                  "type": "string",
+                  "example": 30008130043
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Account balance",
+            "schema": {
+              "properties": {
+                "message": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  },
+                  "example": []
+                },
+                "data": {
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "example": "624251d60a08923b58a5259a"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "AlLan Bida"
+                    },
+                    "tax_id": {
+                      "type": "string",
+                      "example": 30008130043
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "422": {
+            "description": "Unprocessable entity"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "tags": [
+          "Holders"
+        ]
+      }
+    },
+    "/holders/{tax_id}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "tax_id",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account balance",
+            "schema": {
+              "properties": {
+                "message": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  },
+                  "example": []
+                },
+                "data": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "tags": [
+          "Holders"
+        ]
+      }
+    },
+    "/accounts": {
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "properties": {
+                "tax_id": {
+                  "type": "string",
+                  "example": 30008130043
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Account balance",
+            "schema": {
+              "properties": {
+                "message": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  },
+                  "example": []
+                },
+                "data": {
+                  "properties": {
+                    "_id": {
+                      "type": "string"
+                    },
+                    "number": {
+                      "type": "string"
+                    },
+                    "agency": {
+                      "type": "string"
+                    },
+                    "active": {
+                      "type": "boolean"
+                    },
+                    "blocked": {
+                      "type": "boolean"
+                    },
+                    "holder_id": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "422": {
+            "description": "Unprocessable entity"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "tags": [
+          "Accounts"
+        ]
+      }
+    },
+    "/accounts/{agency}/{number}/transactions": {
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "properties": {
+                "method": {
+                  "type": "string",
+                  "example": "credit|debit"
+                },
+                "value": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          {
+            "in": "path",
+            "name": "agency",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "number",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Account balance",
+            "schema": {
+              "properties": {
+                "message": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  },
+                  "example": []
+                },
+                "data": {
+                  "properties": {
+                    "_id": {
+                      "type": "string"
+                    },
+                    "account_number": {
+                      "type": "string"
+                    },
+                    "account_agency": {
+                      "type": "string"
+                    },
+                    "method": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "422": {
+            "description": "Unprocessable entity"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "tags": [
+          "Accounts"
+        ]
+      },
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "agency",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "number",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "begin_date",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "end_date",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account balance",
+            "schema": {
+              "properties": {
+                "message": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  },
+                  "example": []
+                },
+                "data": {
+                  "example": [
+                    {
+                      "_id": "624251da0a08923b58a5259b",
+                      "account_number": "30008130043",
+                      "account_agency": "0001",
+                      "method": "credit",
+                      "created_at": "2022-03-28 21:29:34.131000",
+                      "value": 0.01
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "422": {
+            "description": "Unprocessable entity"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "tags": [
+          "Accounts"
+        ]
+      }
+    },
+    "/accounts/{agency}/{number}/balance": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "agency",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "number",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account balance",
+            "schema": {
+              "properties": {
+                "message": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  },
+                  "example": []
+                },
+                "data": {
+                  "example": {
+                    "balance": 0.09
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "422": {
+            "description": "Unprocessable entity"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "tags": [
+          "Accounts"
+        ]
+      }
+    },
+    "/accounts/{agency}/{number}/active": {
+      "put": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "agency",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "number",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account balance",
+            "schema": {
+              "properties": {
+                "message": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  },
+                  "example": []
+                },
+                "data": {
+                  "properties": {
+                    "_id": {
+                      "type": "string"
+                    },
+                    "number": {
+                      "type": "string"
+                    },
+                    "agency": {
+                      "type": "string"
+                    },
+                    "active": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "blocked": {
+                      "type": "boolean"
+                    },
+                    "holder_id": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "422": {
+            "description": "Unprocessable entity"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "tags": [
+          "Accounts"
+        ]
+      }
+    },
+    "/accounts/{agency}/{number}/blocked": {
+      "put": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "agency",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "number",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account balance",
+            "schema": {
+              "properties": {
+                "message": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  },
+                  "example": []
+                },
+                "data": {
+                  "properties": {
+                    "_id": {
+                      "type": "string"
+                    },
+                    "number": {
+                      "type": "string"
+                    },
+                    "agency": {
+                      "type": "string"
+                    },
+                    "active": {
+                      "type": "boolean"
+                    },
+                    "blocked": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "holder_id": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "422": {
+            "description": "Unprocessable entity"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "tags": [
+          "Accounts"
+        ]
+      }
+    }
+  }
+}

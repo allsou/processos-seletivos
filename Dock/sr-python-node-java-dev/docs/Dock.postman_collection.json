@@ -1,0 +1,292 @@
+{
+	"info": {
+		"_postman_id": "8a658bf2-9f06-4308-b12d-c245a5397095",
+		"name": "Dock",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Holder",
+			"item": [
+				{
+					"name": "Create holder",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Igor Dinho\",\n    \"tax_id\": \"00000000191\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v0/holders",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v0",
+								"holders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete holder",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/v0/holders/:tax_id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v0",
+								"holders",
+								":tax_id"
+							],
+							"variable": [
+								{
+									"key": "tax_id",
+									"value": "00000000191"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Create account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tax_id\": \"00000000191\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v0/accounts",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v0",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create account transaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"value\": 0.01,\n    \"method\": \"credit\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v0/accounts/:agency/:number/transactions",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v0",
+								"accounts",
+								":agency",
+								":number",
+								"transactions"
+							],
+							"variable": [
+								{
+									"key": "agency",
+									"value": "0001"
+								},
+								{
+									"key": "number",
+									"value": "00000000191"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change active status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/v0/accounts/:agency/:number/active",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v0",
+								"accounts",
+								":agency",
+								":number",
+								"active"
+							],
+							"variable": [
+								{
+									"key": "agency",
+									"value": "0001"
+								},
+								{
+									"key": "number",
+									"value": "00000000191"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change blocked status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/v0/accounts/:agency/:number/blocked",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v0",
+								"accounts",
+								":agency",
+								":number",
+								"blocked"
+							],
+							"variable": [
+								{
+									"key": "agency",
+									"value": "0001"
+								},
+								{
+									"key": "number",
+									"value": "00000000191"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get account transactions by period",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"value\": 17.599,\n    \"method\": \"credit\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v0/accounts/:agency/:number/transactions?begin_date=01/01/2021&end_date=10/05/2022",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v0",
+								"accounts",
+								":agency",
+								":number",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "begin_date",
+									"value": "01/01/2021"
+								},
+								{
+									"key": "end_date",
+									"value": "10/05/2022"
+								}
+							],
+							"variable": [
+								{
+									"key": "agency",
+									"value": "0001"
+								},
+								{
+									"key": "number",
+									"value": "00000000191"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Account balance",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/v0/accounts/:agency/:number/balance",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v0",
+								"accounts",
+								":agency",
+								":number",
+								"balance"
+							],
+							"variable": [
+								{
+									"key": "agency",
+									"value": "0001"
+								},
+								{
+									"key": "number",
+									"value": "00000000191"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
