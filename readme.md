@@ -8,6 +8,7 @@ Inside each folder with company name, has the position job applied. Such as:
 | jr-full-dev   | Junior Full Stack Developer   |
 | md-python-dev | Middle Python Developer       |
 | sr-python-dev | Senior Python Developer       |
+| sr-*-dev      | Senior {Many Techs} Developer |
 
 In all folders are available an image with feedback received from companies. Such as:
 | Feedback    | Image                                                                               |

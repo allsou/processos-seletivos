@@ -1,3 +1,6 @@
+# Approved?
+![](https://github.com/allsou/ProcessosSeletivos/blob/master/assets/check-mark.png)
+
 # Dock
 Serviço para criação de contas digitais.
 
